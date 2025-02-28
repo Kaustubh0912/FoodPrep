@@ -3,6 +3,8 @@
 :root {
   --theme-color: #21063e;
   --text-color: #49557e;
+  --hover-color: #363f66;
+  --light-bg: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -18,14 +20,5 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.app {
-  width: 80%;
-  margin: auto;
+  background-color: #f8f9fa;
 }
