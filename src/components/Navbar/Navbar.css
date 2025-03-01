@@ -24,11 +24,13 @@
 .navbar .navbar-menu li {
     position: relative;
     cursor: pointer;
-    transition: color 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .navbar .navbar-menu li:hover {
     color: var(--hover-color);
+    font-weight: bold;
+
   }
 
 
@@ -55,4 +57,5 @@
     background: white;
     color: var(--text-color);
     transform: scale(1.05);
+    font-weight: bold;
 }
