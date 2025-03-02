@@ -13,6 +13,7 @@ const FoodDisplay = () => {
             {
                 food_list.map((food,index)=>{
                     return <FoodItemCard 
+                    key = {food._id}
                     id = {food._id} 
                     name ={food.name} 
                     price={food.price} 

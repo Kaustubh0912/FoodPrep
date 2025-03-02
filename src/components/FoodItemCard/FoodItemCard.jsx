@@ -1,8 +1,9 @@
 import React from 'react'
 import { assets } from '../../assets/assets'
+import './FoodItemCard.css'
 const FoodItemCard = ({id,name,price,description,image}) => {
   return (
-    <div>
+    <div className='food-item'>
       <div className="food-item-image-container">
         <img className='food-item-image' src={image} alt={name} />
       </div>
