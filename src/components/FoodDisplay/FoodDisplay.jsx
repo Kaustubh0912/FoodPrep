@@ -3,7 +3,7 @@ import {StoreContext} from '../../context/StoreContext'
 import FoodItemCard from '../FoodItemCard/FoodItemCard'
 import './FoodDisplay.css'
 
-const FoodDisplay = () => {
+const FoodDisplay = ({category}) => {
 
     const {food_list}=useContext(StoreContext)
   return (
@@ -12,6 +12,7 @@ const FoodDisplay = () => {
         <div className='food-display-list'>
             {
                 food_list.map((food,index)=>{
+                    if(category==="All" || category===food.category)
                     return <FoodItemCard 
                     key = {food._id}
                     id = {food._id} 
