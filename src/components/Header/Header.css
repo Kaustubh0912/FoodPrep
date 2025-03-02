@@ -1,5 +1,5 @@
 .header {
-    height: 70vh;
+    height: 60vh;
     margin: 30px auto;
     padding: 1.5rem 5%;
     background: url('/header_img.png') no-repeat;
@@ -20,15 +20,18 @@
     gap: 1.5vw;
     max-width: 50%;
     bottom: 10%;
-    left: 4%;
+    left: 7%;
     animation: fadeIn 3s;
 }
 
 .header-contents h2 {
     color: var(--theme-color);
     font-size: max(4.5vw, 2.2rem);
-    font-weight: bold;
-    text-shadow: 0.9px 0.9px 0px white;
+    font-weight: 500;
+    text-shadow: rgb(255, 255, 255) 0.7px 0.7px 0px, 
+                 rgb(255, 255, 255) -0.7px 0.7px 0px,
+                 rgb(255, 255, 255) 0.7px -0.7px 0px,
+                 rgb(255, 255, 255) -0.7px -0.7px 0px;
 }
 
 .header-contents p {
