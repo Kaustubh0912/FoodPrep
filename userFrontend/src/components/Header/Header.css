@@ -67,6 +67,7 @@
 @media (max-width: 750px) {
     .header-contents{
         max-width: 65%;
+        gap:max(5vw,25px);
     }
     .header-contents p{
         display: none;
