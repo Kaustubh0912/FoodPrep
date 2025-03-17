@@ -84,3 +84,11 @@
     font-size: 1.7rem;
     text-align: center;
 }
+
+@media (max-width:750px){
+    .footer-content{
+        display: flex;
+        flex-direction: column;
+        gap:35px;
+    }
+}
