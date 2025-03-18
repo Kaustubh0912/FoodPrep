@@ -24,26 +24,26 @@ const Order = () => {
         <input type="tel" placeholder='Phone' />
       </div>
       <div className="place-order-right">
-      <div className="cart-total">
-          <h2>Cart Totals</h2>
-          <div>
-            <div className="cart-total-details">
-              <p>Subtotal</p>
-              <p>₹{getTotalCartAmount()}</p>
+        <div className="cart-total">
+            <h2>Cart Totals</h2>
+            <div>
+              <div className="cart-total-details">
+                <p>Subtotal</p>
+                <p>₹{getTotalCartAmount()}</p>
+              </div>
+              <hr />
+              <div className="cart-total-details">
+                <p>Delivery Fee</p>
+                <p>₹{getTotalCartAmount()!==0?20:0}</p>
+              </div>
+              <hr />
+              <div className="cart-total-details">
+                <b>Total</b>
+                <b>₹{getTotalCartAmount()+20}</b>
+              </div>
             </div>
-            <hr />
-            <div className="cart-total-details">
-              <p>Delivery Fee</p>
-              <p>₹{getTotalCartAmount()!==0?20:0}</p>
-            </div>
-            <hr />
-            <div className="cart-total-details">
-              <b>Total</b>
-              <b>₹{getTotalCartAmount()+20}</b>
-            </div>
+            <button> Proceed to Payement</button>
           </div>
-          <button> Proceed to Payement</button>
-        </div>
       </div>
     </form>
   )
