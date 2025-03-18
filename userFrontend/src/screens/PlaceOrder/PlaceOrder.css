@@ -35,3 +35,12 @@
 .place-order button{
     margin-top: 50px;
 }
+@media (max-width: 768px) {
+    .place-order{
+        flex-direction: column;
+    }
+   
+    .place-order-right{
+        margin-top: 20px;
+    }
+}
