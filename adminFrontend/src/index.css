@@ -11,6 +11,10 @@
   font-family: Outfit;
 }
 
+html{
+  font-size: 62.5%;
+}
+
 body{
   min-height: 100vh;
   background-color: #fcfcfc;
