@@ -38,7 +38,7 @@
 }
 
 @media (max-width: 900px) {
-    p{
+    .sidebar-options p{
         display: none;
     }
     .sidebar-option{
