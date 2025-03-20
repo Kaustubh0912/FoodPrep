@@ -18,13 +18,6 @@
     gap:20px;
 }
 
-
-.flex-col {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
 .add-img-upload img{
     width: 120px;
     cursor: pointer;
