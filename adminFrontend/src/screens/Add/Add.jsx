@@ -1,8 +1,11 @@
 import {useState} from 'react'
 import './Add.css'
 import {assets} from '../../assets/assets'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
-const Add = () => {
+
+const Add = ({url}) => {
   
   const [image, setImage] = useState(false);
   const[data, setData] = useState({
@@ -26,13 +29,25 @@ const Add = () => {
     formData.append('description', data.description);
     formData.append('price', data.price);
     formData.append('category', data.category);
-    
+    try {
+      const response = await axios.post(`${url}/api/food/add`,formData)
+      setData({
+        name:"",
+    description:"",
+    price:"",
+    category:"Salad"
+      })
+      setImage(false)
+      toast.success(response.data.message)
+    } catch (error) {
+      toast.error(error.data.data.message);
+    }
   }
 
   return (
     <div className='screen'>
       <div className="container">
-        <form className='flex-col'>
+        <form className='flex-col' onSubmit={onSubmitHandler}>
           <div className="add-img-upload flex-col">
             <p>Upload Image</p>
             <label htmlFor="image">
