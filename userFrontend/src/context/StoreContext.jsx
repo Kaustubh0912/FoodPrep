@@ -1,4 +1,4 @@
-import {createContext,useState} from 'react'
+import {createContext,useState,useEffect} from 'react'
 import {food_list} from '../assets/assets'
 
 export const StoreContext = createContext(null)
@@ -44,6 +44,14 @@ const StoreContexProvider = (props)=>{
         token,
         setToken
     }
+
+    useEffect(()=>{
+        const token = localStorage.getItem('token')
+        if(token)
+        {
+            
+        }
+    })
 
     return (
         <StoreContext.Provider value={contextValue}>

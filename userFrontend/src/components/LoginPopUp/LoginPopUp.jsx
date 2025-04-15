@@ -3,6 +3,7 @@ import './LoginPopUp.css'
 import {assets} from '../../assets/assets'
 import { StoreContext } from '../../context/StoreContext'
 import axios from 'axios'
+import {toast} from 'react-toastify'
 
 const LoginPopUp = ({setShowLogin}) => {
     
@@ -31,23 +32,20 @@ const LoginPopUp = ({setShowLogin}) => {
         
         try {
             const response = await axios.post(newURL, data)
-            if (response.data.token) {
+            if(curState==="Sign Up"){
+                toast.success("Sign Up successful")
+                setCurState('Log In')
+            }
+            else
+            {
                 setToken(response.data.token)
                 localStorage.setItem('token', response.data.token)
                 setShowLogin(false)
-            } else if (response.data.message) {
-                alert(response.data.message)
-                if (curState === "Sign Up") {
-                    setCurState("Log In")
-                }
             }
+            
         } catch (error) {
             console.error("API error:", error)
-            if (error.response && error.response.data && error.response.data.message) {
-                alert(error.response.data.message)
-            } else {
-                alert("Connection error. Please check if server is running.")
-            }
+            alert(error.response.data.message)
         }
     }
 
@@ -73,7 +71,6 @@ const LoginPopUp = ({setShowLogin}) => {
                         name="email"
                         onChange={onChangeHandler} 
                         value={data.email} 
-                        type="email" 
                         placeholder='Your Email' 
                         required
                     />

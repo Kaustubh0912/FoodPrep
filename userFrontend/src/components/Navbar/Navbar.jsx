@@ -6,9 +6,17 @@ import './Navbar.css';
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
-  const { getTotalCartAmount } = useContext(StoreContext);
+  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Fixing the logout function - it was being called immediately
+  const logout = () => {
+    localStorage.removeItem('token'); // Fixed to remove 'token', not the token value
+    setToken("");
+    navigate("/");
+  };
 
   useEffect(() => {
     if (location.pathname !== "/" && menu === "menu") {
@@ -53,7 +61,17 @@ const Navbar = ({ setShowLogin }) => {
           <Link to="/cart"><img src={assets.basket_icon} alt="" /></Link>
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
-        <button onClick={() => setShowLogin(true)}>Sign Up</button>
+        {!token
+          ? <button onClick={() => setShowLogin(true)}>Sign Up</button>
+          : <div className="navbar-profile">
+            <img src={assets.profile_icon} alt="" />
+            <ul className="nav-profile-dropdown">
+              <li><img src={assets.bag_icon} alt="" /><p>Orders</p></li>
+              <hr />
+              <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
+            </ul>
+          </div>
+        }
       </div>
     </div>
   );
