@@ -1,33 +1,39 @@
-import {React,useContext} from 'react'
-import {StoreContext} from '../../context/StoreContext'
-import FoodItemCard from '../FoodItemCard/FoodItemCard'
-import './FoodDisplay.css'
+import React, { useContext } from "react";
+import { StoreContext } from "../../context/StoreContext";
+import FoodItemCard from "../FoodItemCard/FoodItemCard";
+import "./FoodDisplay.css";
 
-const FoodDisplay = ({category}) => {
+const FoodDisplay = ({ category }) => {
+  const { food_list, url } = useContext(StoreContext);
 
-    const {food_list}=useContext(StoreContext)
+  // Ensure food_list is treated as an array
+  const foodItems = Array.isArray(food_list) ? food_list : [];
+
+  // Log food list for debugging
+  console.log("Food list in FoodDisplay:", foodItems);
+
   return (
-    <div className='food-display'>
-        <h2>Top dishes near you </h2>
-        <div className='food-display-list'>
-            {
-                food_list.map((food,index)=>{
-                    if(category==="All" || category===food.category)
-                    return <FoodItemCard 
-                    key = {food._id}
-                    id = {food._id} 
-                    name ={food.name} 
-                    price={food.price} 
-                    description = {food.description} 
-                    image= {food.image}
-                    />
-                })
-            }
-        </div>
-  
-      
+    <div className="food-display">
+      <h2>Top dishes near you</h2>
+      <div className="food-display-list">
+        {foodItems.map((food) => {
+          if (category === "All" || category === food.category) {
+            return (
+              <FoodItemCard
+                key={food._id}
+                id={food._id}
+                name={food.name}
+                price={food.price}
+                description={food.description}
+                image={food.image}
+              />
+            );
+          }
+          return null;
+        })}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default FoodDisplay
+export default FoodDisplay;

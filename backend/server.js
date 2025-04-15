@@ -4,6 +4,7 @@ const cors = require ('cors')
 const connectDB = require('./config/dbConn')
 const foodRouter = require('./routes/foodRoute')
 const userRouter = require('./routes/userRoute')
+const cartRouter = require('./routes/cartRoute')
 
 //app config
 const app = express();
@@ -17,6 +18,7 @@ app.use(cors());
 //routes
 app.use('/api/food', foodRouter);
 app.use('/api/user', userRouter);
+app.use('/api/cart', cartRouter);
 app.use('/image',express.static('uploads'))
 
 app.get('/',(req,res)=>{
