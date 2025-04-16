@@ -6,7 +6,7 @@ export const StoreContext = createContext(null);
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   const [token, setToken] = useState("");
-  const [food_list, setFoodList] = useState([]); // Initialize as array
+  const [food_list, setFoodList] = useState([]);
   const url = "http://localhost:4000";
 
   const fetchFoodList = async () => {
@@ -55,7 +55,6 @@ const StoreContextProvider = (props) => {
 
   const addToCart = async (itemId) => {
     if (!token) {
-      // Handle locally if not logged in
       if (!cartItems[itemId]) {
         setCartItems({ ...cartItems, [itemId]: 1 });
       } else {
@@ -70,7 +69,6 @@ const StoreContextProvider = (props) => {
         { itemId },
         { headers: { Authorization: `Bearer ${token}` } },
       );
-      // Update local cart state after successful API call
       const newCartItems = { ...cartItems };
       if (!newCartItems[itemId]) {
         newCartItems[itemId] = 1;
@@ -85,7 +83,6 @@ const StoreContextProvider = (props) => {
 
   const removeFromCart = async (itemId) => {
     if (!token) {
-      // Handle locally if not logged in
       if (cartItems[itemId] === 1) {
         const newCartItems = { ...cartItems };
         delete newCartItems[itemId];
@@ -100,7 +97,6 @@ const StoreContextProvider = (props) => {
       await axios.delete(`${url}/api/cart/remove?itemId=${itemId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      // Update local cart state after successful API call
       const newCartItems = { ...cartItems };
       if (newCartItems[itemId] === 1) {
         delete newCartItems[itemId];
@@ -126,6 +122,13 @@ const StoreContextProvider = (props) => {
     return total;
   };
 
+  const loadCartData = async (token) => {
+    const response = await axios.get(url + "/api/cart/get", {
+      headers: { token },
+    });
+    setCartItems(response.data.cartData);
+  };
+
   const contextValue = {
     getTotalCartAmount,
     food_list,
@@ -133,6 +136,7 @@ const StoreContextProvider = (props) => {
     setCartItems,
     addToCart,
     removeFromCart,
+    loadCartData,
     url,
     token,
     setToken,

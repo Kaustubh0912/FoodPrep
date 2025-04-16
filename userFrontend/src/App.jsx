@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar'
 import Home from './screens/Home/Home'
 import Cart from './screens/Cart/Cart'
 import Order from './screens/PlaceOrder/PlaceOrder'
+import Verify from './screens/Verify/Verify'
 import Footer from './components/Footer/Footer'
 import LoginPopUp from './components/LoginPopUp/LoginPopUp'
 import { Routes,Route } from 'react-router-dom'
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/order" element={<Order />} />
+            <Route path="/verify" element={<Verify />} />
           </Routes>
 
       </div>
