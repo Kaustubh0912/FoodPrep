@@ -5,6 +5,6 @@ const authMiddleware = require('../middlewares/auth')
 
 orderRouter.post("/place",authMiddleware,placeOrder)
 orderRouter.post("/verify",verifyOrder)
-orderRouter.get("/userOrder",userOrder)
+orderRouter.get("/userorder",userOrder)
 
 module.exports = orderRouter
