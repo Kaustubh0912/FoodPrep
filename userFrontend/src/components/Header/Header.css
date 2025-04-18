@@ -63,3 +63,12 @@
         display: none;
     }
 }
+
+@media (max-width: 536px) {
+    .header button {
+        display: none;
+    }
+    .header-contents h2{
+        padding-bottom: 5vh;
+    }
+}
