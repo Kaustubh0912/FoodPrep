@@ -4,7 +4,8 @@ require('dotenv').config()
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 const placeOrder = async (req, res) => {
-    const frontendURL = "http://localhost:5173"
+    // const frontendURL = "http://localhost:5173"
+    const frontendURL = "https://foodprepuser-vip1.onrender.com"
     try {
         const newOrder = await orderModel.create({
             userId: req.userId,

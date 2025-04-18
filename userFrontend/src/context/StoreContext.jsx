@@ -7,7 +7,8 @@ const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   const [token, setToken] = useState("");
   const [food_list, setFoodList] = useState([]);
-  const url = "http://localhost:4000";
+  // const url = "http://localhost:4000";
+  const url = "https://foodprep-uezu.onrender.com";
 
   const fetchFoodList = async () => {
     try {
