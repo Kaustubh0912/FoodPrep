@@ -141,8 +141,6 @@
     }
     
     .payment-failed-badge {
-        top: 10px;
-        right: 10px;
-        font-size: 1rem;
+        display: none;
     }
 }
