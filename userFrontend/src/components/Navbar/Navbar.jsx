@@ -11,9 +11,9 @@ const Navbar = ({ setShowLogin }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Fixing the logout function - it was being called immediately
+
   const logout = () => {
-    localStorage.removeItem('token'); // Fixed to remove 'token', not the token value
+    localStorage.removeItem('token'); 
     setToken("");
     navigate("/");
   };
@@ -39,11 +39,30 @@ const Navbar = ({ setShowLogin }) => {
     setMenu("menu");
   };
 
+  const handleContactClick = () => {
+    setMenu("contact-us");
+    
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollToFooter: true } });
+    } else {
+      const footerSection = document.getElementById("footer");
+      if (footerSection) {
+        footerSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   useEffect(() => {
     if (location.state?.scrollToExplore) {
       const exploreSection = document.getElementById("explore-menu");
       if (exploreSection) {
         exploreSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    else if (location.state?.scrollToFooter) {
+      const footerSection = document.getElementById("footer");
+      if (footerSection) {
+        footerSection.scrollIntoView({ behavior: "smooth" });
       }
     }
   }, [location.state]);
@@ -54,7 +73,7 @@ const Navbar = ({ setShowLogin }) => {
       <ul className="navbar-menu">
         <Link to='/' onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}>Home</Link>
         <li onClick={handleMenuClick} className={menu === "menu" ? "active" : ""}>Menu</li>
-        <a href="#footer"><li onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>Contact us</li></a>
+        <li onClick={handleContactClick} className={menu === "contact-us" ? "active" : ""}>Contact us</li>
       </ul>
       <div className="navbar-right">
         <div className="basket-dot">
@@ -66,7 +85,7 @@ const Navbar = ({ setShowLogin }) => {
           : <div className="navbar-profile">
             <img src={assets.profile_icon} alt="" />
             <ul className="nav-profile-dropdown">
-            <Link to="/myorders"><li><img src={assets.bag_icon} alt="" /><p>Orders</p></li></Link>
+              <Link to="/myorders"><li><img src={assets.bag_icon} alt="" /><p>Orders</p></li></Link>
               <hr />
               <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
             </ul>

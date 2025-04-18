@@ -9,8 +9,7 @@ const FoodDisplay = ({ category }) => {
   // Ensure food_list is treated as an array
   const foodItems = Array.isArray(food_list) ? food_list : [];
 
-  // Log food list for debugging
-  console.log("Food list in FoodDisplay:", foodItems);
+
 
   return (
     <div className="food-display">

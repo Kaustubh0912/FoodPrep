@@ -8,7 +8,6 @@ const FoodItemCard = ({ id, name, price, description, image }) => {
     useContext(StoreContext);
   const itemCount = cartItems[id] || 0;
 
-  // Handle both local asset images and backend images
   const imageUrl =
     typeof image === "string" && image.startsWith("http")
       ? image
