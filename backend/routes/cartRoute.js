@@ -7,7 +7,6 @@ const {
 } = require("../controllers/cartController");
 const authMiddleware = require("../middlewares/auth");
 
-// Apply auth middleware to all cart routes
 cartRouter.use(authMiddleware);
 
 cartRouter.post("/add", addToCart);
