@@ -32,7 +32,6 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Enhanced styles for failed orders */
 .failed-order {
     background-color: #fff0f0;
     border-left: 6px solid #ff6b6b;
@@ -118,7 +117,6 @@
     padding: 2rem;
 }
 
-/* Highlight failed orders more prominently */
 .failed-order::before {
     content: '';
     position: absolute;

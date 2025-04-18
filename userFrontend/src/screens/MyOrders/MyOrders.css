@@ -70,7 +70,8 @@
 }
 
 .my-orders-order button:hover {
-    background-color: #218c74; /* fallback hover color */
+    background-color: #218c74;
+    /* fallback hover color */
     opacity: 0.95;
     transform: scale(1.03);
 }

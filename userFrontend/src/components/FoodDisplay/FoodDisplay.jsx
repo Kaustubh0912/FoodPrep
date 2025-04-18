@@ -6,10 +6,7 @@ import "./FoodDisplay.css";
 const FoodDisplay = ({ category }) => {
   const { food_list, url } = useContext(StoreContext);
 
-  // Ensure food_list is treated as an array
   const foodItems = Array.isArray(food_list) ? food_list : [];
-
-
 
   return (
     <div className="food-display">

@@ -89,14 +89,14 @@ const listOrders = async (req, res) => {
     }
 }
 
-const updateStatus = async (req,res)=>{
+const updateStatus = async (req, res) => {
     try {
-        await orderModel.findByIdAndUpdate(req.body.orderId,{status:req.body.status})
-        res.json({message:"Status Updated"})
+        await orderModel.findByIdAndUpdate(req.body.orderId, { status: req.body.status })
+        res.json({ message: "Status Updated" })
     } catch (error) {
         console.log(error)
         res.status(500).json({ message: "Internal Server Error" })
     }
 }
 
-module.exports = { placeOrder, verifyOrder, userOrder, listOrders ,updateStatus}
+module.exports = { placeOrder, verifyOrder, userOrder, listOrders, updateStatus }

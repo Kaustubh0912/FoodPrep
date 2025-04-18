@@ -6,11 +6,11 @@ import axios from 'axios'
 import { assets } from '../../assets/assets'
 
 const MyOrders = () => {
-  
+
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const { url, token } = useContext(StoreContext)
-  
+
     const fetchOrders = async () => {
         try {
             const response = await axios.get(`${url}/api/order/userorder`, {
@@ -25,15 +25,15 @@ const MyOrders = () => {
     }
 
     useEffect(() => {
-        if(token) {
+        if (token) {
             fetchOrders()
         } else {
             setIsLoading(false)
         }
     }, [token])
 
-    if(isLoading) {
-        return <Loader/>
+    if (isLoading) {
+        return <Loader />
     }
 
     const handleTrackOrder = () => {
@@ -48,21 +48,21 @@ const MyOrders = () => {
                 {
                     data.length > 0 ? (
                         data.map((order, index) => {
-                            const isPaymentFailed = order.payment === "false" 
-                            
+                            const isPaymentFailed = order.payment === "false"
+
                             return (
-                                <div 
-                                    key={index} 
+                                <div
+                                    key={index}
                                     className={`my-orders-order ${isPaymentFailed ? 'failed-order' : ''}`}
                                 >
-                                    <img 
-                                        src={isPaymentFailed ? assets.failed_icon || assets.parcel_icon : assets.parcel_icon} 
-                                        alt="" 
+                                    <img
+                                        src={isPaymentFailed ? assets.failed_icon || assets.parcel_icon : assets.parcel_icon}
+                                        alt=""
                                     />
                                     <p>
                                         {
                                             order.items.map((item, itemIndex) => {
-                                                if(itemIndex === order.items.length - 1) {
+                                                if (itemIndex === order.items.length - 1) {
                                                     return `${item.name} x ${item.quantity}`
                                                 }
                                                 return `${item.name} x ${item.quantity}, `
@@ -71,13 +71,13 @@ const MyOrders = () => {
                                     </p>
                                     <p>₹{order.amount}</p>
                                     <p>Items: {order.items.length}</p>
-                                    
+
                                     {isPaymentFailed ? (
                                         <p className="failed-status">Payment Failed</p>
                                     ) : (
                                         <p><span>&#x25cf; </span><b>{order.status}</b></p>
                                     )}
-                                    
+
                                     {!isPaymentFailed && (
                                         <button onClick={handleTrackOrder}>Track Order</button>
                                     )}

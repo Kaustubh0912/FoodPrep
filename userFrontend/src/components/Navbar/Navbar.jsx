@@ -13,7 +13,7 @@ const Navbar = ({ setShowLogin }) => {
 
 
   const logout = () => {
-    localStorage.removeItem('token'); 
+    localStorage.removeItem('token');
     setToken("");
     navigate("/");
   };
@@ -41,7 +41,7 @@ const Navbar = ({ setShowLogin }) => {
 
   const handleContactClick = () => {
     setMenu("contact-us");
-    
+
     if (location.pathname !== "/") {
       navigate("/", { state: { scrollToFooter: true } });
     } else {

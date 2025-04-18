@@ -1,5 +1,5 @@
 const express = require('express')
-const cors = require ('cors')
+const cors = require('cors')
 
 const connectDB = require('./config/dbConn')
 const foodRouter = require('./routes/foodRoute')
@@ -22,12 +22,12 @@ app.use('/api/food', foodRouter);
 app.use('/api/user', userRouter);
 app.use('/api/cart', cartRouter);
 app.use('/api/order', orderRouter);
-app.use('/image',express.static('uploads'))
+app.use('/image', express.static('uploads'))
 
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     res.send("API Working")
 })
 
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`)
 })

@@ -15,10 +15,8 @@ const Cart = () => {
   } = useContext(StoreContext);
   const navigate = useNavigate();
 
-  // Ensure food_list is treated as an array
   const foodItems = Array.isArray(food_list) ? food_list : [];
 
-  // Function to get the correct image URL
   const getImageUrl = (image) => {
     return typeof image === "string" && image.startsWith("http")
       ? image

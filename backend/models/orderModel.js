@@ -1,33 +1,33 @@
 const mongoose = require("mongoose");
 
-const orderSchema =  new mongoose.Schema({
-    userId:{
-        type:String,
+const orderSchema = new mongoose.Schema({
+    userId: {
+        type: String,
         required: true
     },
-    items:{
-        type:Array,
+    items: {
+        type: Array,
         required: true
     },
-    amount:{
-        type:Number,
+    amount: {
+        type: Number,
         required: true
     },
-    address:{
-        type:Object,
+    address: {
+        type: Object,
         required: true
     },
-    status:{
-        type:String,
-        default:"Food Processing"
+    status: {
+        type: String,
+        default: "Food Processing"
     },
-    date:{
-        type:Date,
-        default:Date.now()
+    date: {
+        type: Date,
+        default: Date.now()
     },
-    payment:{
-        type:String,
-        default:false
+    payment: {
+        type: String,
+        default: false
     }
 })
 
