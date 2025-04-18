@@ -36,6 +36,11 @@ const MyOrders = () => {
         return <Loader/>
     }
 
+    const handleTrackOrder = () => {
+        // Fixed the bug: This was immediately invoking fetchOrders instead of being a callback
+        fetchOrders();
+    }
+
     return (
         <div className='my-orders'>
             <h2>My Orders</h2>
@@ -43,9 +48,17 @@ const MyOrders = () => {
                 {
                     data.length > 0 ? (
                         data.map((order, index) => {
+                            const isPaymentFailed = order.payment === "false" 
+                            
                             return (
-                                <div key={index} className='my-orders-order'>
-                                    <img src={assets.parcel_icon} alt="" />
+                                <div 
+                                    key={index} 
+                                    className={`my-orders-order ${isPaymentFailed ? 'failed-order' : ''}`}
+                                >
+                                    <img 
+                                        src={isPaymentFailed ? assets.failed_icon || assets.parcel_icon : assets.parcel_icon} 
+                                        alt="" 
+                                    />
                                     <p>
                                         {
                                             order.items.map((item, itemIndex) => {
@@ -58,13 +71,21 @@ const MyOrders = () => {
                                     </p>
                                     <p>₹{order.amount}</p>
                                     <p>Items: {order.items.length}</p>
-                                    <p><span>&#x25cf; </span><b>{order.status}</b></p>
-                                    <button onClick={fetchOrders()}>Track Order</button>
+                                    
+                                    {isPaymentFailed ? (
+                                        <p className="failed-status">Payment Failed</p>
+                                    ) : (
+                                        <p><span>&#x25cf; </span><b>{order.status}</b></p>
+                                    )}
+                                    
+                                    {!isPaymentFailed && (
+                                        <button onClick={handleTrackOrder}>Track Order</button>
+                                    )}
                                 </div>
                             )
                         })
                     ) : (
-                        <p>No Orders Found</p>
+                        <p className="no-orders">No Orders Found</p>
                     )
                 }
             </div>
