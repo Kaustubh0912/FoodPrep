@@ -3,9 +3,13 @@ import './Orders.css'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { assets } from '../../../../userFrontend/src/assets/assets'
+import Loader from '../../components/Loader/Loader'
+
 
 const Orders = ({ url }) => {
   const [orders, setOrders] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
   
   const fetchAllOrders = async () => {
     try {
@@ -13,12 +17,18 @@ const Orders = ({ url }) => {
       setOrders(response.data.data)
     } catch (error) {
       toast.error(error.response?.data?.message || "Failed to fetch orders")
+    } finally {
+      setIsLoading(false)
     }
   }
 
   useEffect(() => {
     fetchAllOrders()
   }, [])
+
+  if (isLoading) {
+    return <Loader />
+  }
 
   const handleStatusChange = async(orderId, status) => {
     try {
