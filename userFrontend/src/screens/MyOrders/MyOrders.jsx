@@ -37,7 +37,6 @@ const MyOrders = () => {
     }
 
     const handleTrackOrder = () => {
-        // Fixed the bug: This was immediately invoking fetchOrders instead of being a callback
         fetchOrders();
     }
 
