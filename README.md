@@ -132,6 +132,3 @@ Live Demo: [https://foodprepuser-vip1.onrender.com/](https://foodprepuser-vip1.o
 
 This project is created for educational purposes and as a portfolio piece. Feel free to use it as a reference for your own projects.
 
-## Acknowledgements
-
-- This project was created as a teaching resource for FACEPrep, an educational technology company
